@@ -13,6 +13,7 @@ License:	GPLv2+
 Group:		Games/Other
 BuildRequires:	SDL-devel SDL_ttf-devel SDL_mixer-devel SDL_image-devel SDL_Pango-devel
 BuildRequires:	ImageMagick
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	tuxtype2
 Obsoletes:	tuxtype2
 
