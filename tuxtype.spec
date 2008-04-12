@@ -1,5 +1,5 @@
 %define	name	tuxtype
-%define	version	1.5.12
+%define	version	1.5.15
 %define	release	%mkrel 1
 
 Summary:	Educational typing tutor game starring Tux
@@ -26,7 +26,7 @@ release.
 %setup -q
 
 %build
-%configure	--bindir=%{_gamesbindir} \
+%configure2_5x	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir}
 %make
 
