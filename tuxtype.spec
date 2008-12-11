@@ -10,7 +10,7 @@ URL:		http://alioth.debian.org/frs/?group_id=31080
 License:	GPLv2+
 Group:		Games/Other
 BuildRequires:	SDL-devel SDL_ttf-devel SDL_mixer-devel SDL_image-devel SDL_Pango-devel
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	tuxtype2
 Obsoletes:	tuxtype2
