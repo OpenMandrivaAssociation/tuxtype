@@ -1,19 +1,25 @@
+%define Werror_cflags	%nil
+
 %define	fname	tuxtype_w_fonts
 
 Summary:	Educational typing tutor game starring Tux
 Name:		tuxtype
-Version:	1.5.17
+Version:	1.7.0
 Release:	%{mkrel 1}
 # have to change with each new release as the number after download.php changes :(
-Source0:	http://alioth.debian.org/frs/download.php/2370/%{fname}-%{version}.tar.gz
+Source0:	http://alioth.debian.org/frs/download.php/2686/%{fname}-%{version}.tar.gz
 URL:		http://alioth.debian.org/frs/?group_id=31080
 License:	GPLv2+
 Group:		Games/Other
-BuildRequires:	SDL-devel SDL_ttf-devel SDL_mixer-devel SDL_image-devel SDL_Pango-devel
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_ttf-devel
+BuildRequires:	SDL_mixer-devel
+BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_Pango-devel
 BuildRequires:	imagemagick
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Provides:	tuxtype2
-Obsoletes:	tuxtype2
+Provides:	tuxtype2 = %{version}-%{release}
+Obsoletes:	tuxtype2 < 1.5.3-9
 
 %description 
 Tux Typing is an educational typing tutor game starring Tux, the Linux
@@ -22,6 +28,8 @@ release.
 
 %prep
 %setup -q -n %{fname}-%{version}
+sed -i -e 's,/usr/share/fonts/truetype/ttf-.*/,%{_gamesdatadir}/%{name}/fonts/,g' src/loaders.c
+sed -i -e 's,/usr/share,%{_gamesdatadir},g' src/setup.c
 
 %build
 %configure2_5x	--bindir=%{_gamesbindir} \
@@ -51,6 +59,8 @@ convert -scale 16x16 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{n
 convert -scale 32x32 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 convert -scale 48x48 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
+%find_lang %{name}
+
 %if %mdkversion < 200900
 %post
 %{update_menus}
@@ -66,9 +76,9 @@ convert -scale 48x48 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{n
 %clean
 rm -rf %{buildroot}
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog README tuxtype/docs/en/howtotheme.html 
+%doc AUTHORS ChangeLog README doc/en/howtotheme.html 
 %{_gamesbindir}/%{name}
 %{_datadir}/%{name}
 %{_gamesdatadir}/%{name}
