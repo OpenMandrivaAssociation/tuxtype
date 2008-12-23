@@ -1,3 +1,5 @@
+# Non-trivial to fix error with this enabled, code doesn't look
+# dangerous - AdamW 2008/12
 %define Werror_cflags	%nil
 
 %define	fname	tuxtype_w_fonts
@@ -28,6 +30,7 @@ release.
 
 %prep
 %setup -q -n %{fname}-%{version}
+# Fix incorrect paths hardcoded into the source (#46417) - AdamW
 sed -i -e 's,/usr/share/fonts/truetype/ttf-.*/,%{_gamesdatadir}/%{name}/fonts/,g' src/loaders.c
 sed -i -e 's,/usr/share,%{_gamesdatadir},g' src/setup.c
 
