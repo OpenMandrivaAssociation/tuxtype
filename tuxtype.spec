@@ -6,7 +6,7 @@
 
 Summary:	Educational typing tutor game starring Tux
 Name:		tuxtype
-Version:	1.7.0
+Version:	1.7.4
 Release:	%{mkrel 1}
 # have to change with each new release as the number after download.php changes :(
 Source0:	http://alioth.debian.org/frs/download.php/2686/%{fname}-%{version}.tar.gz
