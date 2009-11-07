@@ -6,7 +6,7 @@
 
 Summary:	Educational typing tutor game starring Tux
 Name:		tuxtype
-Version:	1.7.4
+Version:	1.7.5
 Release:	%{mkrel 1}
 # have to change with each new release as the number after download.php changes :(
 Source0:	http://alioth.debian.org/frs/download.php/2686/%{fname}-%{version}.tar.gz
@@ -19,6 +19,7 @@ BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_Pango-devel
 BuildRequires:	imagemagick
+BuildRequires:	librsvg-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	tuxtype2 = %{version}-%{release}
 Obsoletes:	tuxtype2 < 1.5.3-9
