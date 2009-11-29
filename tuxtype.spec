@@ -1,15 +1,11 @@
-# Non-trivial to fix error with this enabled, code doesn't look
-# dangerous - AdamW 2008/12
-%define Werror_cflags	%nil
-
 %define	fname	tuxtype_w_fonts
 
 Summary:	Educational typing tutor game starring Tux
 Name:		tuxtype
-Version:	1.7.5
+Version:	1.8.0
 Release:	%{mkrel 1}
 # have to change with each new release as the number after download.php changes :(
-Source0:	http://alioth.debian.org/frs/download.php/2686/%{fname}-%{version}.tar.gz
+Source0:	http://alioth.debian.org/frs/download.php/3175/%{fname}-%{version}.tar.gz
 URL:		http://alioth.debian.org/frs/?group_id=31080
 License:	GPLv2+
 Group:		Games/Other
