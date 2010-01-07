@@ -3,7 +3,7 @@
 Summary:	Educational typing tutor game starring Tux
 Name:		tuxtype
 Version:	1.8.0
-Release:	%{mkrel 1}
+Release:	%mkrel 2
 # have to change with each new release as the number after download.php changes :(
 Source0:	http://alioth.debian.org/frs/download.php/3175/%{fname}-%{version}.tar.gz
 URL:		http://alioth.debian.org/frs/?group_id=31080
@@ -32,8 +32,10 @@ sed -i -e 's,/usr/share/fonts/truetype/ttf-.*/,%{_gamesdatadir}/%{name}/fonts/,g
 sed -i -e 's,/usr/share,%{_gamesdatadir},g' src/setup.c
 
 %build
-%configure2_5x	--bindir=%{_gamesbindir} \
-		--datadir=%{_gamesdatadir}
+%configure2_5x	--disable-rpath \
+		--bindir=%{_gamesbindir} \
+		--datadir=%{_gamesdatadir} \
+		--localstatedir=%{_localstatedir}/lib 
 %make
 
 %install
@@ -58,6 +60,8 @@ mkdir -p %{buildroot}%{_iconsdir}/hicolor/{48x48,32x32,16x16}/apps
 convert -scale 16x16 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 convert -scale 32x32 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 convert -scale 48x48 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+
+mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}
 
 %find_lang %{name}
 
@@ -84,4 +88,4 @@ rm -rf %{buildroot}
 %{_gamesdatadir}/%{name}
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
-
+%{_localstatedir}/lib/%{name}
