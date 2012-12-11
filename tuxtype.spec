@@ -8,14 +8,13 @@ Source0:	%{fname}-%{version}.tar.gz
 URL:		http://alioth.debian.org/frs/?group_id=31080
 License:	GPLv2+
 Group:		Games/Other
-BuildRequires:	SDL-devel
-BuildRequires:	SDL_ttf-devel
-BuildRequires:	SDL_mixer-devel
-BuildRequires:	SDL_image-devel
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(SDL_ttf)
+BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	SDL_Pango-devel
 BuildRequires:	imagemagick
 BuildRequires:	librsvg-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Provides:	tuxtype2 = %{version}-%{release}
 Obsoletes:	tuxtype2 < 1.5.3-9
 
@@ -66,11 +65,7 @@ convert -scale 48x48 %{name}.ico %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{n
 
 %find_lang %{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README doc/en/howtotheme.html
 %{_sysconfdir}/%{name}
 %{_gamesbindir}/%{name}
@@ -79,4 +74,4 @@ rm -rf %{buildroot}
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_localstatedir}/lib/%{name}
-%attr(-,root,games) %{_localstatedir}/lib/%{name}/words
+#% attr(-,root,games) %{_localstatedir}/lib/%{name}/words
