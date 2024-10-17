@@ -5,7 +5,7 @@ Name:		tuxtype
 Version:	1.8.1
 Release:	2
 Source0:	%{fname}-%{version}.tar.gz
-URL:		http://alioth.debian.org/frs/?group_id=31080
+URL:		https://alioth.debian.org/frs/?group_id=31080
 License:	GPLv2+
 Group:		Games/Other
 BuildRequires:	pkgconfig(sdl)
